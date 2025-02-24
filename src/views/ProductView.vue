@@ -24,7 +24,7 @@
       <h3 class="text-2xl font-bold mb-2">Hilera de Tungsteno con forma circular</h3>
     </div>
     <div class="md:w-1/2 mt-6 md:mt-0 flex justify-center">
-      <RouterLink to:="{ name: 'producto' }" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">Comprar</RouterLink>
+      <RouterLink :to="{ name: 'producto' }" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">Comprar</RouterLink>
     </div>
   </div>
 

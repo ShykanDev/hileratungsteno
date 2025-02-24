@@ -3,7 +3,7 @@
     <div class="flex items-center">
       <!-- <i class="fas fa-shield-alt mr-2"></i> -->
        <img src="../assets/img/sslLogoV3.png" class="w-8 mr-2" alt="">
-      <RouterLink :to="{ name: 'home' }" class="text-slate-800 hover:text-gray-300">
+      <RouterLink :to="{ name: 'home' }" translate="no" class="text-slate-800 hover:text-gray-300">
         <span class="text-xl font-semibold" v-html="currentDomain"></span>
       </RouterLink>
       <div class="flex gap-2">
@@ -39,6 +39,30 @@
   <main>
     <slot name="main"></slot>
   </main>
+  <footer>
+    <section class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="text-center md:text-left mb-4 md:mb-0">
+        <h3 class="text-xl font-semibold">HileraJoyeria.com</h3>
+        <p class="text-sm">Hilera de tungsteno, barra de tungsteno, barra para trefilado, trefiladora, tungsten carbide, herramienta para joyero o artesano joyero ideal para reducir el radio de diferentes materiales ferrosos o no ferrosos.</p>
+      </div>
+      <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+        <!-- changing a to RouterLink -->
+
+        <RouterLink to="/tungsteno" class="hover:text-gray-400"><i class="fas fa-question-circle"></i> ¿Qué es tungsteno?</RouterLink>
+        <RouterLink to="/producto" class="hover:text-gray-400"><i class="fas fa-box"></i> Productos</RouterLink>
+        <RouterLink to="/comprar" class="hover:text-gray-400"><i class="fas fa-shopping-cart"></i> Comprar</RouterLink>
+        <RouterLink to="/contacto" class="hover:text-gray-400"><i class="fas fa-envelope"></i> Contacto</RouterLink>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm">
+      <p>&copy; 2025 Todos los derechos reservados. Design by: JAAC <small>Updated by: PACA</small></p>
+    </div>
+  </div>
+</section>
+
+  </footer>
 </template>
 
 <script lang="ts" setup>

@@ -20,6 +20,8 @@
             <i class="fas fa-user text-gray-400"></i>
           </div>
           <input
+
+          v-model="name"
             type="text"
             id="nombre"
             name="nombre"
@@ -35,6 +37,7 @@
             <i class="fas fa-envelope text-gray-400"></i>
           </div>
           <input
+            v-model="email"
             type="email"
             id="email"
             name="email"
@@ -50,6 +53,7 @@
             <i class="fas fa-tag text-gray-400"></i>
           </div>
           <input
+            v-model="subject"
             type="text"
             id="asunto"
             name="asunto"
@@ -65,6 +69,7 @@
             <i class="fas fa-phone text-gray-400"></i>
           </div>
           <input
+            v-model="phone"
             type="tel"
             id="telefono"
             name="telefono"
@@ -79,6 +84,7 @@
             <i class="fas fa-comment text-gray-400"></i>
           </div>
           <textarea
+            v-model="message"
             id="mensaje"
             name="mensaje"
             rows="4"
@@ -91,6 +97,7 @@
         <!-- Botón de Enviar -->
         <div class="text-center">
           <button
+            @click.prevent="sendEmail"
             type="submit"
             class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 shadow-md"
           >
@@ -108,7 +115,64 @@
 
 <script lang="ts" setup>
 import MainLayout from '@/layouts/MainLayout.vue';
+import { ref } from 'vue';
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css'; // for React, Vue and Svelte
+import emailjs from '@emailjs/browser';
+// Create an instance of Notyf
+const notyf = new Notyf({
+  duration: 6000,
+  position: {
+    x: 'left',
+    y: 'top',
+  }
+});
 
+
+emailjs.init({
+  publicKey: 'fXlbInB-wrOGPiUbH',
+  // Do not allow headless browsers
+  blockHeadless: true,
+  blockList: {
+    // Block the suspended emails
+    list: ['foo@emailjs.com', 'bar@emailjs.com'],
+    // The variable contains the email address
+    watchVariable: 'userEmail',
+  },
+  limitRate: {
+    // Set the limit rate for the application
+    id: 'app',
+    // Allow 1 request per 10s
+    throttle: 10000,
+  },
+});
+
+
+const subject = ref('');
+const name = ref('');
+const email = ref('');
+const phone = ref('');
+const message = ref('');
+const sendEmail = async() => {
+const response = await emailjs.send('service_3nl9wkf.','template_2q2mc52', {
+    subject: subject.value,
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+    message: message.value,
+    url:'www.hilerajoyeria.com',
+  });
+  if (response.status === 200) {
+    notyf.success('Hemos revibido su correo, pronto nos pondremos en contacto!');
+    subject.value = '';
+    name.value = '';
+    email.value = '';
+    phone.value = '';
+    message.value = '';
+  } else {
+    notyf.error('Error al enviar el correo, por favor intentelo mas tarde');
+  }
+}
 
 </script>
 
