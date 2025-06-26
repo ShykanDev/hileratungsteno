@@ -1,23 +1,23 @@
 <template>
    <MainLayout>
     <template #main>
-      <section id="contacto" class="bg-gradient-to-r from-blue-50 to-gray-50 py-16 px-4 animate-fade-up">
-  <div class="container mx-auto max-w-4xl">
-    <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+      <section id="contacto" class="px-4 py-16 bg-gradient-to-r from-blue-50 to-gray-50 animate-fade-up">
+     <div class="container mx-auto max-w-4xl">
+    <div class="p-8 bg-white rounded-2xl shadow-xl md:p-12">
       <!-- Título -->
-      <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+      <div class="mb-8 text-center">
+        <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 md:text-4xl">
           Contáctanos
         </h2>
-        <p class="text-gray-600 mt-2">Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos pronto.</p>
+        <p class="mt-2 text-gray-600">Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos pronto.</p>
       </div>
 
       <!-- Formulario -->
       <form class="space-y-6">
         <!-- Nombre -->
         <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-user text-gray-400"></i>
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <i class="text-gray-400 fas fa-user"></i>
           </div>
           <input
 
@@ -26,15 +26,15 @@
             id="nombre"
             name="nombre"
             placeholder="Nombre completo"
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+            class="py-3 pr-4 pl-10 w-full rounded-lg border border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
           >
         </div>
 
         <!-- Correo Electrónico -->
         <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-envelope text-gray-400"></i>
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <i class="text-gray-400 fas fa-envelope"></i>
           </div>
           <input
             v-model="email"
@@ -42,15 +42,15 @@
             id="email"
             name="email"
             placeholder="Correo electrónico"
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+            class="py-3 pr-4 pl-10 w-full rounded-lg border border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
           >
         </div>
 
         <!-- Asunto -->
         <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-tag text-gray-400"></i>
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <i class="text-gray-400 fas fa-tag"></i>
           </div>
           <input
             v-model="subject"
@@ -58,15 +58,15 @@
             id="asunto"
             name="asunto"
             placeholder="Asunto"
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+            class="py-3 pr-4 pl-10 w-full rounded-lg border border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
           >
         </div>
 
         <!-- Número de Teléfono (Opcional) -->
         <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-phone text-gray-400"></i>
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <i class="text-gray-400 fas fa-phone"></i>
           </div>
           <input
             v-model="phone"
@@ -74,14 +74,14 @@
             id="telefono"
             name="telefono"
             placeholder="Número de teléfono (opcional)"
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+            class="py-3 pr-4 pl-10 w-full rounded-lg border border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
         </div>
 
         <!-- Mensaje -->
         <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 pt-3 flex items-start pointer-events-none">
-            <i class="fas fa-comment text-gray-400"></i>
+          <div class="flex absolute inset-y-0 left-0 items-start pt-3 pl-3 pointer-events-none">
+            <i class="text-gray-400 fas fa-comment"></i>
           </div>
           <textarea
             v-model="message"
@@ -89,7 +89,7 @@
             name="mensaje"
             rows="4"
             placeholder="Escribe tu mensaje aquí..."
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+            class="py-3 pr-4 pl-10 w-full rounded-lg border border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
           ></textarea>
         </div>
@@ -99,9 +99,9 @@
           <button
             @click.prevent="sendEmail"
             type="submit"
-            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 shadow-md"
+            class="px-8 py-3 font-semibold text-white bg-blue-500 rounded-full shadow-md transition-all duration-300 hover:bg-blue-600 hover:scale-105"
           >
-            <i class="fas fa-paper-plane mr-2"></i> Enviar Mensaje
+            <i class="mr-2 fas fa-paper-plane"></i> Enviar Mensaje
           </button>
         </div>
       </form>
