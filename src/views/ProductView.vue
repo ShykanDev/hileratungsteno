@@ -1,19 +1,19 @@
 <template>
    <MainLayout>
     <template #main>
-      <section ref="articleHtml" class="sticky top-20 z-40 text-blue-800 rounded-b-lg" :class="userHasScrolled ? 'animate-fade-up' : 'animate-fade-down'">
+      <section ref="articleHtml" class="sticky top-20 z-40 text-blue-800 rounded-b-3xl" :class="userHasScrolled ? 'animate-fade-up  backdrop-blur-2xl shadow-xl w-3/4 mx-auto' : 'animate-fade-down bg-white '">
   <div class="mx-auto w-full h-auto text-center transition-all ease-in-out animate-duration-1000"  :class="userHasScrolled ? 'bg-0' : 'bg-transparent'">
-    <article v-if="!userHasScrolled" class="animate-fade-down animate-delay-100">
-      <h2 class="mb-4 text-3xl font-bold">Conozca todos los productos de la barra trefiladora de tungsteno {{scrollY}}</h2>
+    <article v-if="!userHasScrolled" class="py-3 animate-fade-down animate-delay-100">
+      <h2 class="mb-4 text-3xl font-bold">Conozca todos los productos de la barra trefiladora de tungsteno</h2>
       <p class="mb-6 text-lg">Las hileras de tungsteno se diferencian por forma, cantidad de hoyos y dimensiones</p>
     </article>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <a href="#p-circulo" class="flex gap-2 items-center px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Círculo</a>
-      <a href="#p-cuadrado" class="flex gap-2 items-center px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-square'/>Cuadrado</a>
-      <a href="#p-semi-circulo" class="flex gap-2 items-center px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle-half'/>Semi-Círculo</a>
-      <a href="#p-ovalo" class="flex gap-2 items-center px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Óvalo</a>
-      <a href="#p-triangulo" class="flex gap-2 items-center px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-triangle'/>Triángulo</a>
-      <a href="#p-luna" class="flex gap-2 items-center px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Luna</a>
+    <div class="flex overflow-x-scroll gap-4 justify-center py-2 ">
+      <a href="#p-circulo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Círculo</a>
+      <a href="#p-cuadrado" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-square'/>Cuadrado</a>
+      <a href="#p-semi-circulo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle-half'/>Semi-Círculo</a>
+      <a href="#p-ovalo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Óvalo</a>
+      <a href="#p-triangulo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-triangle'/>Triángulo</a>
+      <a href="#p-luna" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Luna</a>
       <a href="#p-hexagono" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-hexagon'/>Hexágono</a>
     </div>
   </div>
