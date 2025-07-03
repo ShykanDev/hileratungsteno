@@ -9,6 +9,7 @@ export default {
 	extend: {
     fontFamily: {
       'poppins': ['Poppins', 'sans-serif'],
+      'mulish': ['Mulish', 'sans-serif'],
     }
   },
   },

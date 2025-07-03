@@ -47,7 +47,7 @@
     <div class="p-6 mb-4 text-center bg-white rounded-lg shadow-lg md:w-1/3 md:mb-0">
       <h2 class="mb-4 text-2xl font-bold">2</h2>
       <p class="mb-4 text-gray-700">Si deseas mensajería, puedes escribirnos a nuestro WhatsApp y pedir informes o realizar la compra, se brindará toda la información requerida.</p>
-      <a href="https://api.whatsapp.com/send?phone=525562516687&text=Hola!%20Quiero%20información%20del%20producto!" target="_blank" rel="noopener noreferrer" class="px-6 py-3 font-bold text-white bg-green-500 rounded-full transition duration-300 ease-in-out transform hover:bg-green-700 hover:scale-105"><i class="mr-2 fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://api.whatsapp.com/send?phone=525562516687&text=¡Hola!%20Vengo%20de%20la%20página%20HileraTungsteno.com,%20me%20gustaría%20saber%20más%20información%20de%20la%20compra" target="_blank" rel="noopener noreferrer" class="px-6 py-3 font-bold text-white bg-green-500 rounded-full transition duration-300 ease-in-out transform hover:bg-green-700 hover:scale-105"><i class="mr-2 fab fa-whatsapp"></i> WhatsApp</a>
     </div>
     <div class="p-6 text-center bg-white rounded-lg shadow-lg md:w-1/3">
       <h2 class="mb-4 text-2xl font-bold">3</h2>

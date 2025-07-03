@@ -128,6 +128,13 @@ const notyf = new Notyf({
   }
 });
 
+const validateForm = () => {
+  if (subject.value === '' || name.value === '' || email.value === '' || message.value === '') {
+    notyf.error('Por favor, completa todos los campos');
+    return false;
+  }
+  return true;
+}
 
 emailjs.init({
   publicKey: 'fXlbInB-wrOGPiUbH',
@@ -154,6 +161,7 @@ const email = ref('');
 const phone = ref('');
 const message = ref('');
 const sendEmail = async() => {
+if (!validateForm()) return;
 const response = await emailjs.send('service_3nl9wkf.','template_2q2mc52', {
     subject: subject.value,
     name: name.value,

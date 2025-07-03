@@ -1,29 +1,52 @@
 <template>
    <MainLayout>
     <template #main>
-      <section ref="articleHtml" class="sticky top-20 z-40 text-blue-800 rounded-b-3xl" :class="userHasScrolled ? 'animate-fade-up  backdrop-blur-2xl shadow-xl w-3/4 mx-auto' : 'animate-fade-down bg-white '">
-  <div class="mx-auto w-full h-auto text-center transition-all ease-in-out animate-duration-1000"  :class="userHasScrolled ? 'bg-0' : 'bg-transparent'">
-    <article v-if="!userHasScrolled" class="py-3 animate-fade-down animate-delay-100">
+      <section ref="articleHtml" class="sticky top-20 z-40 text-blue-800  border-[2px] transition-all ease-in-out duration-[1500ms] left-0 right-0 w-full" :class="[userHasScrolled ? 'animate-fade   shadow-xl w-3/4 mx-auto border-cyan-900 rounded-b-3xl' : 'animate-fade-down bg-white  border-transparent rounded-b-sm', hideShapes ? ' -translate-y-full backdrop-blur-none' : ' translate-y-0  backdrop-blur-lg']">
+  <div class="mx-auto w-full h-auto text-center ease-in-out bgtransition-all animate-duration-1000"  :class="userHasScrolled ? 'bg-0' : 'bg-transparent'">
+    <article v-show="!userHasScrolled" class="py-3 animate-fade-down animate-delay-100">
       <h2 class="mb-4 text-3xl font-bold">Conozca todos los productos de la barra trefiladora de tungsteno</h2>
       <p class="mb-6 text-lg">Las hileras de tungsteno se diferencian por forma, cantidad de hoyos y dimensiones</p>
     </article>
-    <div class="flex overflow-x-scroll gap-4 justify-center py-2 ">
-      <a href="#p-circulo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Círculo</a>
-      <a href="#p-cuadrado" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-square'/>Cuadrado</a>
-      <a href="#p-semi-circulo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle-half'/>Semi-Círculo</a>
-      <a href="#p-ovalo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Óvalo</a>
-      <a href="#p-triangulo" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-triangle'/>Triángulo</a>
-      <a href="#p-luna" class="flex gap-2 items-center px-1 py-1 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-circle'/>Luna</a>
-      <a href="#p-hexagono" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"><v-icon name='bi-hexagon'/>Hexágono</a>
+    <div class="flex relative flex-wrap gap-1 justify-center px-3 py-2 w-full sm:gap-4" >
+      <!--Arrow -->
+      <v-icon name='fa-arrow-up' v-show="userHasScrolled && isMobile" class="absolute  bottom-0 right-3 z-40  transition-all ease-in-out duration-[1500ms]" :class="hideShapes ? '-bottom-16 rotate-180 text-blue-800' : 'bottom-0 rotate-0 text-blue-600'" scale="2" @click="handleArrowClick"/>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-circle' class="text-blue-800"/>
+        <a href="#p-circulo" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Círculo</a>
+      </div>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-square' class="text-blue-800"/>
+        <a href="#p-cuadrado" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Cuadrado</a>
+      </div>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-circle-half' class="text-blue-800"/>
+        <a href="#p-semi-circulo" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Semi-Círculo</a>
+      </div>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-circle'/>
+        <a href="#p-ovalo" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Óvalo</a>
+      </div>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-triangle' class="text-blue-800"/>
+        <a href="#p-triangulo" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Triángulo</a>
+      </div>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-circle'/>
+        <a href="#p-luna" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Luna</a>
+      </div>
+      <div class="flex gap-2 items-center p-1 bg-blue-100 rounded-full" :class="userHasScrolled ? 'shadow-lg' : ''" >
+        <v-icon name='bi-hexagon' class="text-blue-800"/>
+        <a href="#p-hexagono" class="items-center px-1 py-1 text-xs font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform sm:text-sm hover:bg-blue-700 hover:scale-105">Hexágono</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="p-circulo" class="container px-4 mx-auto my-8">
+<section id="p-circulo" class="container px-4 mx-auto my-8 scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/round.png" alt="Hilera de Tungsteno con forma circular" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma circular</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma circular</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{ name: 'producto' }" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -125,11 +148,11 @@
 
 <div class="my-8 border-t border-gray-200"></div>
 
-<section id="p-cuadrado" class="container px-4 mx-auto my-8 bg-gray-100 rounded-lg shadow-lg">
+<section id="p-cuadrado" class="container px-4 mx-auto my-8 bg-gray-100 rounded-lg shadow-lg scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/square.png" alt="Hilera de Tungsteno con forma cuadrada" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma cuadrada</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma cuadrada</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{name:'comprar'}" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -207,11 +230,11 @@
 
 <div class="my-8 border-t border-gray-200"></div>
 
-<section id="p-semi-circulo" class="container px-4 mx-auto my-8">
+<section id="p-semi-circulo" class="container px-4 mx-auto my-8 scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/half-round.png" alt="Hilera de Tungsteno con forma Semi-Circulo" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma Semi-Círculo</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma Semi-Círculo</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{name:'comprar'}" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -301,11 +324,11 @@
 
 <div class="my-8 border-t border-gray-200"></div>
 
-<section id="p-ovalo" class="container px-4 mx-auto my-8 bg-gray-100 rounded-lg shadow-lg">
+<section id="p-ovalo" class="container px-4 mx-auto my-8 bg-gray-100 rounded-lg shadow-lg scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/oval.png" alt="Hilera de Tungsteno con forma Ovalada" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma Ovalada</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma Ovalada</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{name:'comprar'}" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -377,11 +400,11 @@
 
 <div class="my-8 border-t border-gray-200"></div>
 
-<section id="p-triangulo" class="container px-4 mx-auto my-8">
+<section id="p-triangulo" class="container px-4 mx-auto my-8 scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/triangle.png" alt="Hilera de Tungsteno con forma Triangular" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma Triangular</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma Triangular</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{name:'comprar'}" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -459,11 +482,11 @@
 
 <div class="my-8 border-t border-gray-200"></div>
 
-<section id="p-luna" class="container px-4 mx-auto my-8 bg-gray-100 rounded-lg shadow-lg">
+<section id="p-luna" class="container px-4 mx-auto my-8 bg-gray-100 rounded-lg shadow-lg scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/moon.png" alt="Hilera de Tungsteno con forma de Luna" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma de Luna</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma de Luna</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{name:'comprar'}" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -541,11 +564,11 @@
 
 <div class="my-8 border-t border-gray-200"></div>
 
-<section id="p-hexagono" class="container px-4 mx-auto my-8">
+<section id="p-hexagono" class="container px-4 mx-auto my-8 scroll-mt-52">
   <div class="flex flex-col justify-between items-center md:flex-row">
     <div class="text-center md:w-1/2 md:text-left">
       <img src="../assets/img/hexagon.png" alt="Hilera de Tungsteno con forma de Hexágono" class="mx-auto mb-4 rounded-lg shadow-lg md:mx-0">
-      <h3 class="mb-2 text-2xl font-bold">Hilera de Tungsteno con forma de Hexágono</h3>
+      <h3 class="mb-2 text-2xl font-bold text-sky-700">Hilera de Tungsteno con forma de Hexágono</h3>
     </div>
     <div class="flex justify-center mt-6 md:w-1/2 md:mt-0">
       <RouterLink :to="{name:'comprar'}" class="px-6 py-3 font-bold text-white bg-blue-500 rounded-full transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105">Comprar</RouterLink>
@@ -655,14 +678,23 @@ const scrollHandler = () => {
     userHasScrolled.value = false
   }
 }
+const hideShapes = ref(false)
+const handleArrowClick = () => {
+  hideShapes.value = !hideShapes.value
+}
+
+const isMobile = ref(false)
+
 
 onMounted(() => {
   window.addEventListener('scroll', scrollHandler)
+  isMobile.value = window.innerWidth <= 768
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', scrollHandler)
 })
+
 </script>
 
 <style scoped>

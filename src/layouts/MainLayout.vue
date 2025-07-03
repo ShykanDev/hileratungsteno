@@ -1,23 +1,24 @@
 <template>
   <header
-    class="flex sticky top-0 z-50 justify-evenly items-center p-4 py-6 w-full bg-white border-b-2 border-sky-900 sm:pr-40 sm:py-5 text-slate-800 animate-fade-down">
-    <div class="flex justify-between items-center">
+    class="flex sticky top-0 z-50 justify-evenly items-center p-4 py-6 w-full bg-white border-b-2 transition-colors duration-1000 ease-in-out sm:pr-40 sm:py-5 text-slate-800" :class="homeUI().getUserHasScrolled ? 'border-b-2 border-b-black' : 'border-b-2 border-b-gray-200'">
+    <div class="flex overflow-scroll justify-between items-center w-full sm:w-auto">
       <!-- <i class="mr-2 fas fa-shield-alt"></i> -->
       <img src="../assets/img/sslLogoV3.png" class="mr-2 w-6 sm:w-8" alt="">
-      <RouterLink :to="{ name: 'home' }" translate="no" class="text-slate-800 hover:text-sky-800">
-        <span class="text-xl font-semibold" v-html="currentDomain"></span>
+      <!-- md initial-->
+      <RouterLink :to="{ name: 'home' }" translate="no" class="bottom-0 text-slate-800 hover:text-sky-800 md:initial md:left-auto md:top-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2v">
+        <span class="text-sm font-semibold sm:text-xl" v-html="currentDomain"></span>
       </RouterLink>
-      <div class="hidden gap-2 sm:flex">
-        <img src="../assets/flags/4x3/mx.svg" alt="" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-75">
-        <img src="../assets/flags/4x3/us.svg" alt="" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-150">
-        <img src="../assets/flags/4x3/cn.svg" alt="" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-300">
-        <img src="../assets/flags/4x3/in.svg" alt="" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-500">
+      <div class="hidden overflow-auto gap-2 pt-3 pr-2 md:pr-0 sm:flex">
+        <img src="../assets/flags/4x3/mx.svg" alt="MX" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-75">
+        <img src="../assets/flags/4x3/us.svg" alt="US" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-150">
+        <img src="../assets/flags/4x3/cn.svg" alt="CN" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-300">
+        <img src="../assets/flags/4x3/in.svg" alt="IN" class="ml-2 w-9 sm:w-9 animate-fade-up animate-delay-500">
       </div>
       <div class="flex absolute bottom-[2px] gap-2 sm:hidden">
-        <img src="../assets/flags/4x3/mx.svg" alt="" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-75">
-        <img src="../assets/flags/4x3/us.svg" alt="" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-150">
-        <img src="../assets/flags/4x3/cn.svg" alt="" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-300">
-        <img src="../assets/flags/4x3/in.svg" alt="" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-500">
+        <img src="../assets/flags/4x3/mx.svg" alt="MX" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-75">
+        <img src="../assets/flags/4x3/us.svg" alt="US" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-150">
+        <img src="../assets/flags/4x3/cn.svg" alt="CN" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-300">
+        <img src="../assets/flags/4x3/in.svg" alt="IN" class="ml-2 w-6 rounded-sm animate-fade-right animate-delay-500">
       </div>
       <HamMenu @click="toggleOpenMenu"  class="pl-2 sm:hidden" />
     </div>
@@ -105,7 +106,9 @@
 
 <script lang="ts" setup>
 import HamMenu from '@/animations/HamMenu.vue';
-import { onMounted, ref } from 'vue'
+import { homeUI } from '@/stores/homeUI';
+import { onMounted, onUnmounted, ref } from 'vue'
+import { useRouter } from 'vue-router';
 // const domains = ['<span>www.</span><span>hilera</span><span>tungsteno</span><span>.com</span>', '<span>www.</span><span>hilera</span><span>joyeria</span><span>.com</span>']
 const domains = [
   // Primer dominio (animate-fade-up)
@@ -134,6 +137,12 @@ const toggleOpenMenu = () => isMenuOpen.value = !isMenuOpen.value;
 onMounted(() => {
   toggleDomauns()
 })
+
+
+
+
+
+
 </script>
 
 <style scoped></style>
